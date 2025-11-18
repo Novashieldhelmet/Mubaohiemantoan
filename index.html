@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaShield - Người Bạn Đồng Hành An Toàn Của Bạn</title>
+    <!-- Tải Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải icon từ Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Sử dụng font Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Tùy chỉnh thanh cuộn (cho trình duyệt Webkit) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1b4b; /* Màu nền tối của thanh cuộn */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5; /* Màu indigo-600 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1; /* Màu indigo-500 */
+        }
+        /* Hiệu ứng mờ dần khi tải */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        /* Hiệu ứng cho các phần tử khi cuộn (sẽ được kích hoạt bằng JS nhỏ) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center gap-2">
+                        <i class="ph-fill ph-shield-check text-3xl text-indigo-500"></i>
+                        <span class="text-2xl font-bold text-white">NovaShield</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex md:items-center md:space-x-4 lg:space-x-6">
+                    <a href="#intro" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Giới thiệu</a>
+                    <a href="#features" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Tính năng</a>
+                    <a href="#how-it-works" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Cách hoạt động</a>
+                    <a href="#ui-demo" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Giao diện</a>
+                    <a href="#team" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Đội ngũ</a>
+                    <!-- Link Google Drive với target="_blank" -->
+                    <a href="https://drive.google.com/drive/folders/1mrOlPlQN0eRByCtcgHBdJpXgO-cCQ-WK" target="_blank" class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-transform duration-200 hover:bg-indigo-500 hover:scale-105">
+                        Tải về ngay
+                    </a>
+                </nav>
+                <div class="md:hidden">
+                    <!-- Nút menu mobile (có thể thêm JS sau) -->
+                    <button class="text-gray-300 hover:text-white">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main class="pt-16">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-indigo-900/30 pt-20 pb-24 sm:pt-28 sm:pb-32">
+            <!-- Hình nền mờ ảo -->
+            <div class="absolute top-0 right-0 -z-10 h-1/2 w-1/2 rounded-full bg-indigo-900/40 blur-[100px] filter"></div>
+            <div class="absolute bottom-0 left-0 -z-10 h-1/3 w-1/3 rounded-full bg-purple-900/30 blur-[120px] filter"></div>
+            
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+                <div class_alias="fade-in" style="animation-delay: 0.1s;">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+                        NovaShield: <span class="text-indigo-400">An tâm trên mọi nẻo đường</span>
+                    </h1>
+                </div>
+                <div class_alias="fade-in" style="animation-delay: 0.3s;">
+                    <p class="mt-6 max-w-2xl mx-auto text-lg leading-8 text-gray-300 sm:text-xl">
+                        Hệ thống IoT tiên tiến tự động phát hiện va chạm và gửi cảnh báo khẩn cấp ngay lập tức, bảo vệ bạn và người thân 24/7.
+                    </p>
+                </div>
+                <div class_alias="fade-in" style="animation-delay: 0.5s;" class="mt-10 flex items-center justify-center gap-x-6">
+                    <!-- Link Google Drive với target="_blank" -->
+                    <a href="https://drive.google.com/drive/folders/1mrOlPlQN0eRByCtcgHBdJpXgO-cCQ-WK" target="_blank" class="rounded-lg bg-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-transform duration-300 hover:bg-indigo-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                        <i class="ph-fill ph-download-simple align-middle mr-2"></i>
+                        Tải ứng dụng
+                    </a>
+                    <a href="#features" class="text-lg font-semibold leading-6 text-gray-300 hover:text-white transition-colors">
+                        Xem tính năng <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Giới thiệu (Vấn đề & Giải pháp) -->
+        <section id="intro" class="py-20 sm:py-28 bg-gray-900">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-3xl text-center reveal">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-400">Vấn đề</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Mỗi giây đều quý giá</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        Theo WHO, gần 1.3 triệu người tử vong mỗi năm do tai nạn giao thông. Rất nhiều trường hợp trong số đó là do cứu hộ chậm trễ vì thiếu thông tin kịp thời.
+                    </p>
+                </div>
+                <div class="mt-16 mx-auto max-w-5xl reveal">
+                    <div class="rounded-3xl bg-gray-800/70 p-8 shadow-2xl backdrop-blur-sm ring-1 ring-white/10 sm:p-12">
+                        <h3 class="text-2xl font-bold tracking-tight text-white">Giải pháp NovaShield</h3>
+                        <p class="mt-4 text-lg text-gray-300">
+                            NovaShield được sinh ra để giải quyết vấn đề này. Khi phát hiện một va chạm nghiêm trọng, hệ thống sẽ <strong class="text-indigo-400">tự động gửi thông tin vị trí GPS</strong> của bạn đến các liên hệ khẩn cấp đã lưu.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Điều này giúp rút ngắn tối đa thời gian phản ứng, tăng cơ hội cứu sống nạn nhân và mang lại sự an tâm tuyệt đối cho bạn và gia đình.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tính năng chính -->
+        <section id="features" class="py-20 sm:py-28 bg-gray-800/50">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center reveal">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-400">Tính năng nổi bật</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Hệ thống bảo vệ toàn diện</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    
+                    <!-- Tính năng 1: Cảnh báo va chạm -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-car-profile text-5xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">Phát hiện va chạm tự động</h3>
+                        <p class="mt-2 text-gray-300">
+                            Sử dụng cảm biến gia tốc, NovaShield phát hiện va chạm mạnh (như tai nạn xe) và kích hoạt quy trình cảnh báo ngay lập tức.
+                        </p>
+                    </div>
+
+                    <!-- Tính năng 2: Gửi cảnh báo khẩn cấp -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal" style="transition-delay: 0.1s;">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-broadcast text-5xl text-red-500"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">SMS/Cuộc gọi khẩn cấp</h3>
+                        <p class="mt-2 text-gray-300">
+                            Nếu bạn không phản hồi "Tôi ổn" trong 5 giây, ứng dụng tự động gửi tin nhắn SMS (kèm tọa độ GPS) và gọi điện cho người thân của bạn.
+                        </p>
+                    </div>
+
+                    <!-- Tính năng 3: Hoạt động nền 24/7 -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal" style="transition-delay: 0.2s;">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-clock-clockwise text-5xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">Hoạt động nền 24/7</h3>
+                        <p class="mt-2 text-gray-300">
+                            NovaShield chạy ngầm liên tục (Foreground Service) để đảm bảo luôn sẵn sàng bảo vệ bạn, ngay cả khi màn hình điện thoại tắt.
+                        </p>
+                    </div>
+
+                    <!-- Tính năng 4: Kết nối IoT (ESP32) -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal" style="transition-delay: 0.3s;">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-bluetooth-connected text-5xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">Kết nối Bluetooth ESP32</h3>
+                        <p class="mt-2 text-gray-300">
+                            Kết nối ổn định với thiết bị phần cứng ESP32 qua Bluetooth để thu thập dữ liệu cảm biến liên tục mà không cần Internet.
+                        </p>
+                    </div>
+
+                    <!-- Tính năng 5: Biểu đồ thời gian thực -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal" style="transition-delay: 0.4s;">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-chart-line text-5xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">Biểu đồ thời gian thực</h3>
+                        <p class="mt-2 text-gray-300">
+                            Theo dõi trực quan dữ liệu từ cảm biến (gia tốc, nhịp tim...) ngay trên ứng dụng, giúp phát hiện bất thường nhanh chóng.
+                        </p>
+                    </div>
+                    
+                    <!-- Tính năng 6: Giao diện trực quan -->
+                    <div class="flex flex-col rounded-2xl bg-gray-800 p-6 shadow-lg ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 hover:bg-gray-700/80 reveal" style="transition-delay: 0.5s;">
+                        <div class="flex-shrink-0">
+                            <i class="ph-fill ph-device-mobile-camera text-5xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="mt-4 text-xl font-semibold text-white">Giao diện dễ sử dụng</h3>
+                        <p class="mt-2 text-gray-300">
+                            Thiết kế đơn giản, rõ ràng. Nút bấm lớn và màu sắc cảnh báo nổi bật giúp bạn thao tác dễ dàng ngay cả trong tình huống căng thẳng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cách thức hoạt động -->
+        <section id="how-it-works" class="py-20 sm:py-28 bg-gray-900">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center reveal">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-400">Quy trình</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Cách NovaShield bảo vệ bạn</p>
+                </div>
+                <div class="mt-16 relative">
+                    <!-- Đường nối các bước (cho desktop) -->
+                    <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-700 -translate-y-4"></div>
+
+                    <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+                        <!-- Bước 1 -->
+                        <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.1s;">
+                            <div class="flex items-center justify-center h-24 w-24 rounded-full bg-indigo-600/20 ring-4 ring-indigo-500 shadow-lg z-10">
+                                <i class="ph-fill ph-warning text-5xl text-indigo-400"></i>
+                            </div>
+                            <h3 class="mt-6 text-2xl font-semibold text-white">1. Phát hiện va chạm</h3>
+                            <p class="mt-2 text-lg text-gray-300">Hệ thống ghi nhận gia tốc vượt ngưỡng an toàn từ cảm biến.</p>
+                        </div>
+                        
+                        <!-- Bước 2 -->
+                        <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.3s;">
+                            <div class="flex items-center justify-center h-24 w-24 rounded-full bg-indigo-600/20 ring-4 ring-indigo-500 shadow-lg z-10">
+                                <i class="ph-fill ph-timer text-5xl text-indigo-400"></i>
+                            </div>
+                            <h3 class="mt-6 text-2xl font-semibold text-white">2. Đếm ngược xác nhận</h3>
+                            <p class="mt-2 text-lg text-gray-300">Bạn có 5 giây để nhấn nút "Tôi ổn". Ứng dụng sẽ phát âm thanh lớn để thu hút sự chú ý.</p>
+                        </div>
+
+                        <!-- Bước 3 -->
+                        <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.5s;">
+                            <div class="flex items-center justify-center h-24 w-24 rounded-full bg-indigo-600/20 ring-4 ring-indigo-500 shadow-lg z-10">
+                                <i class="ph-fill ph-map-pin-line text-5xl text-indigo-400"></i>
+                            </div>
+                            <h3 class="mt-6 text-2xl font-semibold text-white">3. Gửi cứu trợ</h3>
+                            <p class="mt-2 text-lg text-gray-300">Nếu không có phản hồi, vị trí GPS của bạn được gửi khẩn cấp đến người thân.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mô phỏng giao diện -->
+        <section id="ui-demo" class="py-20 sm:py-28 bg-gray-800/50 overflow-hidden">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center reveal">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-400">Giao diện</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Trực quan và Hiệu quả</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        Thiết kế tập trung vào sự đơn giản, giúp bạn phản ứng nhanh nhất khi cần thiết.
+                    </p>
+                </div>
+
+                <!-- Dãy màn hình mô phỏng -->
+                <div class="mt-16 flex justify-center gap-6 sm:gap-8 lg:gap-10 reveal">
+                    <!-- Màn hình 1: Cảnh báo (Nổi bật) -->
+                    <div class="relative w-64 h-[512px] sm:w-72 sm:h-[576px] flex-shrink-0 transition-transform duration-500 hover:scale-105 z-10">
+                        <div class="absolute inset-0 bg-gray-900 border-4 border-gray-700 rounded-3xl shadow-2xl"></div>
+                        <div class="absolute inset-4 sm:inset-5 bg-red-600 rounded-2xl p-6 flex flex-col justify-between text-white">
+                            <!-- Header mô phỏng -->
+                            <div class="flex justify-between items-center text-red-100">
+                                <span class="font-semibold">NovaShield</span>
+                                <i class="ph-fill ph-wifi-high"></i>
+                            </div>
+                            
+                            <!-- Nội dung cảnh báo -->
+                            <div class="text-center">
+                                <i class="ph-fill ph-warning-octagon text-8xl text-white"></i>
+                                <h3 class="text-2xl font-bold mt-4">PHÁT HIỆN VA CHẠM!</h3>
+                                <p class="mt-2 text-red-100">Bạn có sao không?</p>
+                                <div class="text-7xl font-bold my-6">3</div>
+                            </div>
+                            
+                            <!-- Nút bấm -->
+                            <div class="flex flex-col gap-4">
+                                <button class="w-full bg-white text-red-600 font-bold py-4 rounded-full text-lg shadow-lg">
+                                    TÔI ỔN
+                                </button>
+                                <button class="w-full bg-transparent border-2 border-white text-white font-bold py-3 rounded-full text-sm">
+                                    GỌI CỨU HỘ NGAY
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Màn hình 2: Trang chủ (Mờ hơn) -->
+                    <div class="relative w-64 h-[512px] sm:w-72 sm:h-[576px] flex-shrink-0 hidden md:block transition-transform duration-500 hover:scale-105 opacity-70 hover:opacity-100 scale-90 hover:z-20">
+                        <div class="absolute inset-0 bg-gray-900 border-4 border-gray-700 rounded-3xl shadow-2xl"></div>
+                        <div class="absolute inset-4 sm:inset-5 bg-gray-800 rounded-2xl p-6 flex flex-col justify-between text-white">
+                            <!-- Header mô phỏng -->
+                            <div class="flex justify-between items-center text-gray-400">
+                                <span class="font-semibold">NovaShield</span>
+                                <i class="ph-fill ph-bluetooth-connected text-blue-500"></i>
+                            </div>
+                            
+                            <!-- Nội dung chính -->
+                            <div class="text-center my-6">
+                                <div class="w-48 h-48 rounded-full bg-indigo-600/30 mx-auto flex items-center justify-center border-8 border-indigo-500">
+                                    <div class="text-center">
+                                        <i class="ph-fill ph-shield-check text-6xl text-white"></i>
+                                        <span class="block text-xl font-bold mt-2">ĐÃ BẢO VỆ</span>
+                                    </div>
+                                </div>
+                                <p class="mt-6 text-gray-300">Trạng thái: An toàn</p>
+                                <p class="text-gray-400 text-sm">Kết nối với ESP32-NS</p>
+                            </div>
+                            
+                            <!-- Menu mô phỏng -->
+                            <div class="flex justify-around border-t border-gray-700 pt-4">
+                                <i class="ph-fill ph-house text-2xl text-indigo-400"></i>
+                                <i class="ph ph-chart-line text-2xl text-gray-500"></i>
+                                <i class="ph ph-users text-2xl text-gray-500"></i>
+                                <i class="ph ph-gear text-2xl text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Màn hình 3: Biểu đồ (Mờ hơn) -->
+                    <div class="relative w-64 h-[512px] sm:w-72 sm:h-[576px] flex-shrink-0 hidden lg:block transition-transform duration-500 hover:scale-105 opacity-70 hover:opacity-100 scale-90 hover:z-20">
+                        <div class="absolute inset-0 bg-gray-900 border-4 border-gray-700 rounded-3xl shadow-2xl"></div>
+                        <div class="absolute inset-4 sm:inset-5 bg-gray-800 rounded-2xl p-6 flex flex-col justify-between text-white">
+                            <!-- Header mô phỏng -->
+                            <div class="flex justify-between items-center text-gray-400 mb-4">
+                                <span class="font-semibold">Dữ liệu Cảm biến</span>
+                                <i class="ph-fill ph-arrows-clockwise"></i>
+                            </div>
+                            
+                            <!-- Nội dung biểu đồ -->
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-300">Gia tốc (Trục X)</h4>
+                                <!-- Biểu đồ mô phỏng -->
+                                <div class="h-24 w-full bg-gray-700 rounded-lg mt-2 relative overflow-hidden">
+                                    <svg class="absolute inset-0 w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 60 L20 55 L40 65 L60 50 L80 58 L100 62 L120 50 L140 45 L160 55 L180 60 L200 70 L220 65 L240 55 L260 60 L280 62" stroke="#4f46e5" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                
+                                <h4 class="text-sm font-medium text-gray-300 mt-6">Gia tốc (Trục Y)</h4>
+                                <div class="h-24 w-full bg-gray-700 rounded-lg mt-2 relative overflow-hidden">
+                                    <svg class="absolute inset-0 w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 50 L20 52 L40 45 L60 55 L80 60 L100 58 L120 65 L140 70 L160 60 L180 55 L200 50 L220 45 L240 50 L260 55 L280 52" stroke="#6366f1" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Menu mô phỏng -->
+                            <div class="flex justify-around border-t border-gray-700 pt-4 mt-4">
+                                <i class="ph ph-house text-2xl text-gray-500"></i>
+                                <i class="ph-fill ph-chart-line text-2xl text-indigo-400"></i>
+                                <i class="ph ph-users text-2xl text-gray-500"></i>
+                                <i class="ph ph-gear text-2xl text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PHẦN MỚI: Đội ngũ NovaShield -->
+        <section id="team" class="py-20 sm:py-28 bg-gray-900">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center reveal">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-400">NovaShield Team</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Gặp gỡ Đội ngũ</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">
+                        Những con người đứng sau dự án, mang lại sự an toàn cho bạn.
+                    </p>
+                </div>
+
+                <!-- Trưởng nhóm -->
+                <div class="mt-16 flex flex-col items-center justify-center reveal">
+                    <div class="relative">
+                        <!-- THAY THẾ LINK NÀY BẰNG LINK ẢNH CỦA BẠN -->
+                        <img class="h-60 w-60 rounded-full object-cover object-top shadow-2xl ring-4 ring-indigo-500"
+                              src="https://i.ibb.co/fG2pKf0H/1763446550327.png" 
+                              alt="Trần Nguyễn Phú Vinh">
+                    </div>
+                    <h3 class="mt-6 text-2xl font-semibold text-white">Trần Nguyễn Phú Vinh</h3>
+                    <p class="text-base font-semibold text-indigo-400">Trưởng nhóm (Team Leader)</p>
+                </div>
+
+                <!-- Các thành viên -->
+                <div class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+                    
+                    <!-- Thành viên 1: Huỳnh Minh Quân -->
+                    <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.1s;">
+                        <!-- THAY THẾ LINK NÀY BẰNG LINK ẢNH CỦA BẠN -->
+                        <img class="h-56 w-56 rounded-full object-cover object-top shadow-2xl ring-4 ring-gray-700" 
+                             src="https://i.ibb.co/C3Vv3LF7/1763447255788.png" 
+                             alt="Ảnh của Huỳnh Minh Quân">
+                        <h3 class="mt-4 text-xl font-semibold text-white">Huỳnh Minh Quân</h3>
+                        <p class="text-sm font-semibold text-gray-400">Thành viên</p>
+                    </div>
+
+                    <!-- Thành viên 2: Đỗ Thành Danh -->
+                    <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.2s;">
+                        <!-- THAY THẾ LINK NÀY BẰNG LINK ẢNH CỦA BẠN -->
+                        <img class="h-56 w-56 rounded-full object-cover object-top shadow-2xl ring-4 ring-gray-700" 
+                             src="https://i.ibb.co/qYzMwZ6t/1763448312153.png" 
+                             alt="Ảnh của Đỗ Thành Danh">
+                        <h3 class="mt-4 text-xl font-semibold text-white">Đỗ Thành Danh</h3>
+                        <p class="text-sm font-semibold text-gray-400">Thành viên</p>
+                    </div>
+
+                    <!-- Thành viên 3: Võ Trần Minh Khánh -->
+                    <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.3s;">
+                        <!-- THAY THẾ LINK NÀY BẰNG LINK ẢNH CỦA BẠN -->
+                        <img class="h-56 w-56 rounded-full object-cover object-top shadow-2xl ring-4 ring-gray-700" 
+                             src="https://i.ibb.co/QFPJrbBk/Messenger-creation-1384081756558146.jpg" 
+                             alt="Ảnh của Võ Trần Minh Khánh">
+                        <h3 class="mt-4 text-xl font-semibold text-white">Võ Trần Minh Khánh</h3>
+                        <p class="text-sm font-semibold text-gray-400">Thành viên</p>
+                    </div>
+
+                    <!-- Thành viên 4: Lê Tấn Lộc -->
+                    <div class="flex flex-col items-center text-center reveal" style="transition-delay: 0.4s;">
+                        <!-- THAY THẾ LINK NÀY BẰNG LINK ẢNH CỦA BẠN -->
+                        <img class="h-56 w-56 rounded-full object-cover object-top shadow-2xl ring-4 ring-gray-700" 
+                             src="https://i.ibb.co/0R48QgGW/Screenshot-2025-11-18-14-03-08-316-com-google-android-googlequicksearchbox.png" 
+                             alt="Ảnh của Lê Tấn Lộc">
+                        <h3 class="mt-4 text-xl font-semibold text-white">Lê Tấn Lộc</h3>
+                        <p class="text-sm font-semibold text-gray-400">Thành viên</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- KẾT THÚC PHẦN MỚI -->
+
+        <!-- CTA cuối cùng -->
+        <section id="cta" class="bg-gradient-to-t from-gray-900 via-gray-900 to-indigo-900/30 py-20 sm:py-28">
+            <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center reveal">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    Sẵn sàng để được bảo vệ?
+                </h2>
+                <p class="mt-6 text-lg leading-8 text-gray-300">
+                    Tải xuống NovaShield ngay hôm nay và trải nghiệm sự an tâm trên mọi hành trình. An toàn của bạn là ưu tiên hàng đầu của chúng tôi.
+                </p>
+                <div class="mt-10">
+                    <!-- Link Google Drive với target="_blank" -->
+                    <a href="https://drive.google.com/drive/folders/1mrOlPlQN0eRByCtcgHBdJpXgO-cCQ-WK" target="_blank" class="rounded-lg bg-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-transform duration-300 hover:bg-indigo-500 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                        <i class="ph-fill ph-download-simple align-middle mr-2"></i>
+                        Tải về NovaShield
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-white/10">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="ph-fill ph-shield-check text-2xl text-indigo-500"></i>
+                    <span class="text-xl font-bold text-white">NovaShield</span>
+                </div>
+                <!-- DÒNG BẢN QUYỀN ĐÃ ĐƯỢC CẬP NHẬT -->
+                <p class="mt-4 sm:mt-0 text-sm text-gray-400">
+                    © 2025 Bản quyền thuộc về: Trần Nguyễn Phú Vinh
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript cho hiệu ứng cuộn -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Tùy chọn: Dừng quan sát sau khi đã hiển thị
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.1 // Kích hoạt khi 10% phần tử xuất hiện
+            });
+
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
